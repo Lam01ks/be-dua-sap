@@ -13,7 +13,7 @@ if (missingSettings.length > 0) {
 
 const app = express()
 const port = Number(process.env.PORT) || 3000
-const pool = mysql.createPool({
+const databaseOptions = {
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT) || 3306,
   user: process.env.DB_USER,
@@ -21,6 +21,14 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
+}
+
+if (process.env.DB_SSL === 'true') {
+  databaseOptions.ssl = { minVersion: 'TLSv1.2' }
+}
+
+const pool = mysql.createPool({
+  ...databaseOptions,
 })
 
 app.use(cors({ origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173' }))

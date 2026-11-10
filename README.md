@@ -34,7 +34,7 @@ Backend Node.js + Express nằm trong `backend/`. API đăng ký nhận `fullNam
 - `POST http://localhost:3000/api/register`
 - `GET http://localhost:3000/api/health` để kiểm tra trạng thái API và kết nối MySQL
 
-Để chạy trên máy, tạo database/tài khoản MySQL, chạy `backend/database.sql`, sao chép `backend/.env.example` thành `backend/.env` rồi điền cấu hình database. Sau đó:
+Để chạy trên máy, tạo database/tài khoản MySQL, chạy `backend/database.sql`, sao chép `backend/.env.example` thành `backend/.env` rồi điền cấu hình database. Đặt `DB_SSL=true` với nhà cung cấp yêu cầu TLS (ví dụ TiDB Cloud). Sau đó:
 
 ```sh
 cd backend
