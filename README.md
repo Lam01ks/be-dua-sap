@@ -27,6 +27,23 @@ npm run preview
 
 Bản build nằm trong `dist/`. Khi triển khai, cấu hình hosting chuyển các đường dẫn của React Router về `index.html`.
 
+## Backend đăng ký
+
+Backend Node.js + Express nằm trong `backend/`. API đăng ký nhận `fullName`, `email` và `password`:
+
+- `POST http://localhost:3000/api/register`
+- `GET http://localhost:3000/api/health` để kiểm tra trạng thái API và kết nối MySQL
+
+Để chạy trên máy, tạo database/tài khoản MySQL, chạy `backend/database.sql`, sao chép `backend/.env.example` thành `backend/.env` rồi điền cấu hình database. Sau đó:
+
+```sh
+cd backend
+npm install
+npm run dev
+```
+
+Mật khẩu được băm trước khi lưu. Địa chỉ `localhost` chỉ dùng trên máy đang chạy backend; muốn có URL công khai cần triển khai backend và MySQL lên dịch vụ hosting, đồng thời cấu hình `FRONTEND_ORIGIN`.
+
 ## Tài liệu
 
 ## Triển khai tự động bằng Vercel
